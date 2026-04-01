@@ -4,7 +4,7 @@ const port = 3020;
 
 
 
-const posts = [
+let posts = [
     { id: 1, title: "Primo post", body: "Questo è il contenuto del primo post", img: `http://localhost:${port}/imgs/city.jpg`, tags: ["tech", "programming"] },
     { id: 2, title: "Secondo post", body: "Questo è il contenuto del secondo post", img: `http://localhost:${port}/imgs/grass.jpg`, tags: ["lifestyle", "travel"] },
     { id: 3, title: "Terzo post", body: "Questo è il contenuto del terzo post", img: `http://localhost:${port}/imgs/man.jpg`, tags: ["food", "cooking"] },
@@ -43,7 +43,11 @@ router.patch('/:id', (req, res) => {
 
 //Destroy
 router.delete('/:id', (req, res) => {
-    res.send('Elimina il post con id = ' + req.params.id);
+    //dobbiamo rimuovere un post, come fare?
+    const newPosts = posts.filter(post => post.id != req.params.id);
+    posts = newPosts;
+    res.json(posts);
+
 })
 
 module.exports = router;
