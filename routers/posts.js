@@ -14,7 +14,7 @@ const posts = [
 
 //Index
 router.get('/', (req, res) => {
-    res.send('Lista dei post');
+    res.json(posts)
 })
 
 //Show
